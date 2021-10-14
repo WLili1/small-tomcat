@@ -46,6 +46,19 @@ public class HttpServer {
                 input = socket.getInputStream();
                 output = socket.getOutputStream();
                 //Create Request object and parse
+                Request request = new Request(input);
+                request.parse();
+
+                //create Response object
+                Response response = new Response(output);
+                response.setRequest(request);
+                response.sendStaticResource();
+
+                socket.close();
+
+                if (null != request.getUri()) {
+                    shutdown = request.getUri().equals(SHUTDOWN_COMMAND);
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();
