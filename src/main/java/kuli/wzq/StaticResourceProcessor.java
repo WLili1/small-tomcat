@@ -1,2 +1,14 @@
-package kuli.wzq;public class StaticResourceProcessor {
+package kuli.wzq;
+
+import java.io.IOException;
+
+public class StaticResourceProcessor {
+
+    public void process(Request request, Response response) {
+        try {
+            response.sendStaticResource();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

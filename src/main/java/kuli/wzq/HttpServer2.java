@@ -7,7 +7,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class HttpServer1 {
+public class HttpServer2 {
 
     private static final String SHUTDOWN_COMMAND = "/SHUTDOWN";
 
@@ -15,7 +15,7 @@ public class HttpServer1 {
     private boolean shutdown = false;
 
     public static void main(String[] args) {
-        HttpServer1 server = new HttpServer1();
+        HttpServer2 server = new HttpServer2();
         server.await();
     }
 
@@ -48,7 +48,7 @@ public class HttpServer1 {
                 response.setRequest(request);
 
                 if (request.getUri().startsWith("/servlet/")) {
-                    ServletProcessor1 processor = new ServletProcessor1();
+                    ServletProcessor2 processor = new ServletProcessor2();
                     processor.process(request, response);
                 } else {
                     StaticResourceProcessor processor = new StaticResourceProcessor();
